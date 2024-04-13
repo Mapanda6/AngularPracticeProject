@@ -20,11 +20,12 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
     this.message = "5";
     this.name=this.route.snapshot.params['name'];
-    console.log(this.message);
-    console.log(this.route.snapshot.params['name']);  
+  //  console.log(this.message);
+    //console.log(this.route.snapshot.params['name']);  
   }
   getWelcomeMessage(){
     console.log("Get Welcome Message!!");
+    this.dataService.executeHelloWorldService("Roshan");
     
   }
 

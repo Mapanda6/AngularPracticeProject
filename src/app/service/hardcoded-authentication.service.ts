@@ -11,7 +11,7 @@ export class HardcodedAuthenticationService {
     
     if(username =="in28mins" && password==="dummy"){
       sessionStorage.setItem('authenticatedUser', username);
-      console.log('After' + this.isUserLoggedIn());
+      //console.log('After' + this.isUserLoggedIn());
       return true;
     }else{
       return false;
@@ -21,7 +21,7 @@ export class HardcodedAuthenticationService {
   }
   isUserLoggedIn(){
    let user =  sessionStorage.getItem('authenticatedUser');
-   console.log(user);
+  // console.log(user);
    
    return !(user === null)
   }
