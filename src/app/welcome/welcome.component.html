@@ -1,5 +1,4 @@
-<h1>Welcome!</h1>
-<div>welcome in {{name}}! Welcome to our awesome App!</div>
+<div>welcome in <a style="color: brown;">{{name}}</a>! Welcome to our awesome App!</div>
 
 <div>You can manage your todos <a routerLink="/todos">here</a></div>
 
@@ -7,3 +6,9 @@
  Click here to get the customize message.
  <button (click)="getWelcomeMessage()" class="btn btn-success"> Get Welcome Message</button>
 </div>
+
+
+<div class="container" *ngIf="welcomeMessage">
+    <h2>Your Customize message</h2>
+     {{welcomeMessage}}
+   </div>

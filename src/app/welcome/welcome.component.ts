@@ -12,6 +12,7 @@ import { DataService } from '../data.service';
 export class WelcomeComponent implements OnInit {
   message = 'Welcome Message'
   name=""
+  welcomeMessage="";
   //string message = "Welcome message"
   //Activated Route
   constructor(private route: ActivatedRoute, private dataService: DataService){
@@ -25,8 +26,18 @@ export class WelcomeComponent implements OnInit {
   }
   getWelcomeMessage(){
     console.log("Get Welcome Message!!");
-    this.dataService.executeHelloWorldService("Roshan");
-    
+    //console.log(this.dataService.executeHelloWorldService("Roshan").subscribe);
+    this.dataService.executeHelloWorldService("Manisha").subscribe((test)=>{
+          console.log(test.message); 
+          this.welcomeMessage = test.message; 
+    }, error => this.handleErrorResponse(error));
+    console.log("last line of the function call being executed here.");
+  }
+  handleErrorResponse(error: Error){
+    console.log(error.message);
+   // console.log(error.error.message);
+   this.welcomeMessage = error.name;
+
   }
 
 }
