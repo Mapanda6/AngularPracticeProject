@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TodoComponent } from './todo/todo.component';
 
 
 
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     ListToDosComponent,
     FooterComponent,
     MenuComponent,
-    LogoutComponent
+    LogoutComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
