@@ -23,14 +23,14 @@ export class ListToDosComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.retrieveTodos('Manisha');
+    this.refreshTodos('Manisha');
     // throw new Error('Method not implemented.');
   }
-  retrieveTodos(name: string) {
-    this.todoService.retrieveAllTodos(name).subscribe((todos) => {
-      console.log(todos);
-      this.todos = todos;
-    }, error => new Error('Failed due to unknow reason'));
+  refreshTodos(name: string) {
+    this.todoService.retrieveAllTodos(name).subscribe((response)=>{
+      console.log(response);
+      this.todos = response;
+    });
   }
   updateTodo(id: number, name: string) {
     console.log("update" + id);
@@ -43,10 +43,10 @@ export class ListToDosComponent implements OnInit {
   } 
   deleteTodo(name: string, id: number) {
     console.log("delete" + id);
-    this.todoService.DeleteTodo('Manisha', id).subscribe((deleteId) => {
-      console.log(deleteId);
+    this.todoService.deleteTodo('Manisha', id).subscribe((responseFromDelete) => {
+      console.log(responseFromDelete);
+      this.todos = responseFromDelete;
       this.message = `Delete of  id ${id} is successful.`;
-
     });
   }
 
