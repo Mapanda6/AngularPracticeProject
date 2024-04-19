@@ -33,7 +33,7 @@
                 {{todo.targetDate | date | uppercase}}
             </td>
             <td>
-               <button (click)="updateTodo(todo.id, todo.username)" class="btn btn-success"> Update</button>
+               <button (click)="updateTodo(todo.id, todo.username, todo)" class="btn btn-success"> Update</button>
             </td>
             <td>
                 <button (click)="deleteTodo( todo.username,todo.id)" class="btn btn-warning"> Delete</button>
@@ -43,4 +43,7 @@
 
 
 </table>
+</div>
+<div class="">
+    <button (click)="addTodo()" class="btn btn-success"> Add</button>
 </div>

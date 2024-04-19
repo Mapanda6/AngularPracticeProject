@@ -17,7 +17,13 @@ export class TodoDataService {
     
     return this.http.delete<Todo[]>(`http://localhost:8080/user/${name}/todos/${id}`);
   }
- /*  updateTodos(name: string, id: number, todo: Todo){
-    return this.http.put(`http://localhost:8080/user/${name}/todos/${id}`, todo);
-  } */
+  updateTodos(name: string, id: number, todo: Todo){
+    return this.http.put<Todo>(`http://localhost:8080/user/${name}/todos/${id}`, todo);
+  } 
+  retrieveTodo(id: number, username: string){
+    return this.http.get<Todo>(`http://localhost:8080/user/${username}/todos/${id}`);
+  }
+  createTodos(name: string, id: number, todo: Todo){
+    return this.http.post<Todo>(`http://localhost:8080/user/${name}/todos/${id}`, todo);
+  } 
 }

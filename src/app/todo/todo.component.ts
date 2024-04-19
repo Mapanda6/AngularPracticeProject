@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../todo-data.service';
 import { Todo } from '../list-to-dos/list-to-dos.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -13,23 +13,35 @@ export class TodoComponent implements OnInit {
   todo!: Todo;
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.todo = new Todo(1, '', false, new Date(), '');
-    /* this.todoService.updateTodos('Manisha', this.id, this.todo ).subscribe((update: Todo)=>{
-      this.todo = update;
-
-    }); */
+    console.log(this.id);
+    this.todo = new Todo(this.id, '', false, new Date(), '');
+    if(this.id !== -1){
+    this.todoService.retrieveTodo(this.id, "Manisha").subscribe(data =>{
+      console.log(data.username);
+      this.todo = data;
+    });
+  }
   }
 
   constructor(private todoService: TodoDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ){}
 
-  saveTodo(){
+  saveTodo(todo: Todo){
     console.log("Save todo..");
-    
-   /* this.todoService.updateTodos('Manisha1', this.id, this.todo).subscribe({
-
-   }); */
+    if(this.id === -1){
+       // create todo
+       this.todoService.createTodos('Durai23', this.id, this.todo).subscribe(data =>{
+        this.todo = data;
+        this.router.navigate(['todos']);
+ }); 
+    }else{
+    this.todoService.updateTodos('Durai23', this.id, this.todo).subscribe(data =>{
+          this.todo = data;
+          this.router.navigate(['todos']);
+   }); 
   }
+}
 
 }

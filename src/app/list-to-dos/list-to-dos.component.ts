@@ -32,13 +32,13 @@ export class ListToDosComponent implements OnInit {
       this.todos = response;
     });
   }
-  updateTodo(id: number, name: string) {
+  updateTodo(id: number, name: string, todo: Todo) {
     console.log("update" + id);
-   /*  this.router.navigate(['todos', id]);
-    this.todoService.updateTodos(name, id).subscribe((updateId) =>{
+    this.router.navigate(['todos', id]);
+    this.todoService.updateTodos(name, id, todo).subscribe((updateId) =>{
         console.log(updateId);
         
-    });*/
+    });
 
   } 
   deleteTodo(name: string, id: number) {
@@ -48,6 +48,10 @@ export class ListToDosComponent implements OnInit {
       this.todos = responseFromDelete;
       this.message = `Delete of  id ${id} is successful.`;
     });
+  }
+  addTodo(){
+  this.router.navigate(['todos', -1]);
+    
   }
 
 }
