@@ -18,7 +18,7 @@ constructor(private router: Router, private hardcodedAuthService: HardcodedAuthe
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
   }
-  username = "in28mins";
+  username = "test";
   password= "";
   invalidLogin= false;
   errorMessage= "Invalid Credential";

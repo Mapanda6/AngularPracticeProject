@@ -17,15 +17,17 @@ export class DataService {
   executeHelloWorldService(name: string){
     let basicAuthHeaderString = this.createBasiAuth();
    // let authorizationData = 'Basic ' + btoa(username + ':' + password);
-
-    let headers = new HttpHeaders({
-        'Authorization': this.createBasiAuth()
-      });
-    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`, {headers});  
+   const httpOptions = {
+    headers: new HttpHeaders({ 
+      'Access-Control-Allow-Origin':'*',
+      'Authorization':this.createBasiAuth(),
+    })
+  };
+    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`, httpOptions);  
   }
   createBasiAuth(){
-    let userName = 'user';
-    let password = 'password';
+    let userName = 'test';
+    let password = 'test';
     let basicAuthHeaderString = 'Basic'+ window.btoa('user'+ ':'+ 'password');
     return basicAuthHeaderString;
 

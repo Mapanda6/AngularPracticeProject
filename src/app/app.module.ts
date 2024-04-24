@@ -11,8 +11,9 @@ import { ListToDosComponent } from './list-to-dos/list-to-dos.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TodoComponent } from './todo/todo.component';
+import { AuthInterceptor } from './http/auth-iterceptor.service';
 
 
 
@@ -34,7 +35,7 @@ import { TodoComponent } from './todo/todo.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
